@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/spring-2023-ros-workspace/devel/.private/sonar_pkg
+
+Name: sonar_pkg
+Description: Description of sonar_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

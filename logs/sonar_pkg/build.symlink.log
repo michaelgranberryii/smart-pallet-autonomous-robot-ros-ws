@@ -1,0 +1,9 @@
+Symlinking /home/ubuntu/spring-2023-ros-workspace/devel/lib/pkgconfig/sonar_pkg.pc
+Symlinking /home/ubuntu/spring-2023-ros-workspace/devel/lib/sonar_pkg/cmake.lock
+Symlinking /home/ubuntu/spring-2023-ros-workspace/devel/lib/sonar_pkg/sonar0x74_publisher.py
+Symlinking /home/ubuntu/spring-2023-ros-workspace/devel/lib/sonar_pkg/sonar_subscriber.py
+Symlinking /home/ubuntu/spring-2023-ros-workspace/devel/lib/sonar_pkg/sonar0x72_publisher.py
+Symlinking /home/ubuntu/spring-2023-ros-workspace/devel/lib/sonar_pkg/sonar0x70_publisher.py
+Symlinking /home/ubuntu/spring-2023-ros-workspace/devel/lib/sonar_pkg/sonar_algo_sub.py
+Symlinking /home/ubuntu/spring-2023-ros-workspace/devel/share/sonar_pkg/cmake/sonar_pkgConfig.cmake
+Symlinking /home/ubuntu/spring-2023-ros-workspace/devel/share/sonar_pkg/cmake/sonar_pkgConfig-version.cmake
