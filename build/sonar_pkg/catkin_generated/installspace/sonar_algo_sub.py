@@ -6,9 +6,9 @@ from sensor_msgs.msg import Range
 class ObstDet():
 	def __init__(self):
 		rospy.init_node('sonar_listener_algo', anonymous=True)
-		self.range_sonar0x70 = 25
-		self.range_sonar0x72 = 25
-		self.range_sonar0x74 = 25
+		self.range_sonar_left = 25
+		self.range_sonar_center = 25 
+		self.range_sonar_right = 25
 		
 		self.sub_sonar0x70 = rospy.Subscriber("sonar0x70_range_topic", Int32, self.update_range0x70)
 		self.sub_sonar0x72 = rospy.Subscriber("sonar0x72_range_topic", Int32, self.update_range0x72)
@@ -16,31 +16,41 @@ class ObstDet():
 		rospy.loginfo("Subscribers set")
 		
 	def update_range0x70(self, message):
-	 	self.range_sonar0x70 = message.data
+	 	self.range_sonar_left = message.data
 	 	#rospy.loginfo("sonar0x70: " + str(message.data))
 	 	#rospy.loginfo(str(self.range_sonar0x70))
 	 	
 	def update_range0x72(self, message):
-	 	self.range_sonar0x72 = message.data
+	 	self.range_sonar_center = message.data
 	 	#rospy.loginfo("sonar0x72: " + str(message.data))
 	 	#rospy.loginfo(str(self.range_sonar0x72))
 	 
 	def update_range0x74(self, message):
-	 	self.range_sonar0x74 = message.data
+	 	self.range_sonar_right = message.data
 	 	#rospy.loginfo("sonar0x74: " + str(message.data))
 	 	#rospy.loginfo(str(self.range_sonar0x74))
 
 	def run(self):
-		rate = rospy.Rate(5)
+		rate = rospy.Rate(10)
 		while not rospy.is_shutdown():
 			self.boolFun()
 			rate.sleep() 
 			
 	def boolFun(self):
-		if (self.range_sonar0x70 < 100) or (self.range_sonar0x72 < 100) or (self.range_sonar0x70 < 100):
-			rospy.loginfo("Range is 100 cm or less")
+		if (self.range_sonar_center < 100):
+			rospy.loginfo("Stop and turn 180!")
+		elif (self.range_sonar_left < 100):
+			rospy.loginfo("Stop and turn right!")
+		elif (self.range_sonar_left < 100) and (self.range_sonar_center < 100):
+			rospy.loginfo("Stop and turn right! : LC")
+		elif (self.range_sonar_right < 100):
+			rospy.loginfo("Stop and turn left!")
+		elif (self.range_sonar_right < 100) and (self.range_sonar_center < 100):
+			rospy.loginfo("Stop and turn left! : RC")
+		elif (self.range_sonar_left < 100) and (self.range_sonar_center < 100) and (self.range_sonar_right < 100):
+			rospy.loginfo("Stop!")
 		else:
-			rospy.loginfo("Range is greater than 100 cm")
+			rospy.loginfo("Drive!")
 		
 
 if __name__ == '__main__':
