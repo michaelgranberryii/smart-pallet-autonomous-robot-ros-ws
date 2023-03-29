@@ -1,0 +1,1 @@
+/home/ubuntu/spring-2023-ros-workspace/devel/.private/pi_cam_package/share/pi_cam_package/cmake/pi_cam_packageConfig-version.cmake

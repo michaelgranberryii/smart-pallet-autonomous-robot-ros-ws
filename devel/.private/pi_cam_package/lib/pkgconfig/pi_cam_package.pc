@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/spring-2023-ros-workspace/devel/.private/pi_cam_package
+
+Name: pi_cam_package
+Description: Description of pi_cam_package
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

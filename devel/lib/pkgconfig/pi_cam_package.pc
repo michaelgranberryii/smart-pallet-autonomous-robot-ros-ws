@@ -1,0 +1,1 @@
+/home/ubuntu/spring-2023-ros-workspace/devel/.private/pi_cam_package/lib/pkgconfig/pi_cam_package.pc
