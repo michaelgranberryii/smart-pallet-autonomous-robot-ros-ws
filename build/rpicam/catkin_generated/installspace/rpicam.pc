@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/spring-2023-ros-workspace/install
+
+Name: rpicam
+Description: Description of rpicam
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

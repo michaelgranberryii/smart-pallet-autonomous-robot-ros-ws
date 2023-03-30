@@ -1,0 +1,1 @@
+/home/ubuntu/spring-2023-ros-workspace/devel/.private/rpicam/share/rpicam/cmake/rpicamConfig.cmake

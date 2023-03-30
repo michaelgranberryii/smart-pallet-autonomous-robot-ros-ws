@@ -1,13 +1,4 @@
-#----------------------------------------
-#Engineer: Michael Granberry
-#Project: ARCS Smart Pallet
-#Device: Ultrasonic Sensor
-#Model: I2C MaxSonar EZ Series - MB1212
-#Program: ROS Subscriber Node
-#Last Modified Date: Oct 23, 2022
-#----------------------------------------
-
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import rospy
 from std_msgs.msg import Int32
 
