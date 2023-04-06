@@ -86,6 +86,7 @@ class ObstDet():
 
 			rospy.loginfo(self.sonar_list)
 			rospy.loginfo("Drive")
+			return True
 
 		
 	def run(self):
