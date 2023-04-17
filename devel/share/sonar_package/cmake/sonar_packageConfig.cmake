@@ -1,1 +1,0 @@
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/sonar_package/share/sonar_package/cmake/sonar_packageConfig.cmake

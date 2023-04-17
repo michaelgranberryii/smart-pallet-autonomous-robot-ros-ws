@@ -1,7 +1,0 @@
-set(sonar_package_SETUP_PY_SETUP_MODULE "distutils.core")
-set(sonar_package_SETUP_PY_VERSION "0.0.0")
-set(sonar_package_SETUP_PY_SCRIPTS "")
-set(sonar_package_SETUP_PY_PACKAGES "sonar_package")
-set(sonar_package_SETUP_PY_PACKAGE_DIRS "src/sonar_package")
-set(sonar_package_SETUP_PY_MODULES "")
-set(sonar_package_SETUP_PY_MODULE_DIRS "")

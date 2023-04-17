@@ -1,1 +1,0 @@
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/catkin_tools_prebuild/lib/pkgconfig/catkin_tools_prebuild.pc

@@ -1,6 +1,0 @@
-devel_space: /home/ubuntu/spring-2023-ros-workspace/devel
-install: false
-install_space: /home/ubuntu/spring-2023-ros-workspace/install
-profile: default
-source_space: /home/ubuntu/spring-2023-ros-workspace/src
-workspace: /home/ubuntu/spring-2023-ros-workspace
