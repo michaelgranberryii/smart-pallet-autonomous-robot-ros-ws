@@ -168,9 +168,9 @@ class BIMU:
         #     outputString +="\t# HEADING %5.2f  tiltCompensatedHeading %5.2f #" % (heading,tiltCompensatedHeading)
 
 
-        if 1:                       #Change to '0' to stop  showing the angles from the gyro
-            outputString +="\t# GYR_X Angle %5.2f" % (self.gyroXangle)
-        print(outputString)
+        # if 1:                       #Change to '0' to stop  showing the angles from the gyro
+        #     outputString +="\t# GYR_X Angle %5.2f" % (self.gyroXangle)
+        # print(outputString)
 
 
 

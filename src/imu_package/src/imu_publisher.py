@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 import rospy
-from std_msgs.msg import Int32
+from std_msgs.msg import Float32
 from sensor_msgs.msg import Range
 import imu_package.bimu as imu
 import time #Delay
 
 
-def sonar_talker():
-	pub = rospy.Publisher('imu_range_topic', Int32, queue_size=10) # publisher object
+def imu_talker():
+	pub = rospy.Publisher('imu_topic', Float32, queue_size=10) # publisher object
 	rospy.init_node('imu_publisher_node', anonymous=True) # initialize publisher node
 	rate = rospy.Rate(100) # ros rate
 	rospy.loginfo("ROS imu node now publishing.")
@@ -22,7 +22,7 @@ def sonar_talker():
 
 if __name__ == "__main__":
 	try:
-		sonar_talker()
+		imu_talker()
 	except rospy.ROSInterruptException:
 		pass
 		

@@ -111,6 +111,7 @@ catkin_package(
 
 catkin_install_python(PROGRAMS
 	src/imu_publisher.py
+  src/imu_subscriber.py
 	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 ###########
