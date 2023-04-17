@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import rospy
 from std_msgs.msg import Int32
 from sensor_msgs.msg import Range
@@ -7,7 +8,7 @@ import time #Delay
 
 def sonar_talker():
 	pub = rospy.Publisher('sonar0x72_range_topic', Int32, queue_size=10) # publisher object
-	rospy.init_node('sonar0x74_publisher_node', anonymous=True) # initialize publisher node
+	rospy.init_node('sonar0x72_publisher_node', anonymous=True) # initialize publisher node
 	rate = rospy.Rate(100) # ros rate
 	rospy.loginfo("Ros sonar node now publishing.")
 	s = sp.Sonar(0x72)
