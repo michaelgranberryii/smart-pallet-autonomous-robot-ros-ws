@@ -1,7 +1,0 @@
-rpicam
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/rpicam/cmake.lock /home/ubuntu/spring-2023-ros-workspace/devel/./cmake.lock
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/rpicam/lib/pkgconfig/rpicam.pc /home/ubuntu/spring-2023-ros-workspace/devel/lib/pkgconfig/rpicam.pc
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/rpicam/lib/rpicam/cmake.lock /home/ubuntu/spring-2023-ros-workspace/devel/lib/rpicam/cmake.lock
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/rpicam/lib/rpicam/rpicam_pub.py /home/ubuntu/spring-2023-ros-workspace/devel/lib/rpicam/rpicam_pub.py
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/rpicam/share/rpicam/cmake/rpicamConfig-version.cmake /home/ubuntu/spring-2023-ros-workspace/devel/share/rpicam/cmake/rpicamConfig-version.cmake
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/rpicam/share/rpicam/cmake/rpicamConfig.cmake /home/ubuntu/spring-2023-ros-workspace/devel/share/rpicam/cmake/rpicamConfig.cmake

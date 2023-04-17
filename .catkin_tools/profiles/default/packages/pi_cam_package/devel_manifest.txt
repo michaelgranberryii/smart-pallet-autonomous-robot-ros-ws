@@ -1,7 +1,0 @@
-pi_cam_package
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/pi_cam_package/cmake.lock /home/ubuntu/spring-2023-ros-workspace/devel/./cmake.lock
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/pi_cam_package/lib/pkgconfig/pi_cam_package.pc /home/ubuntu/spring-2023-ros-workspace/devel/lib/pkgconfig/pi_cam_package.pc
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/pi_cam_package/lib/pi_cam_package/cmake.lock /home/ubuntu/spring-2023-ros-workspace/devel/lib/pi_cam_package/cmake.lock
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/pi_cam_package/lib/pi_cam_package/image_pub_sub.py /home/ubuntu/spring-2023-ros-workspace/devel/lib/pi_cam_package/image_pub_sub.py
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/pi_cam_package/share/pi_cam_package/cmake/pi_cam_packageConfig.cmake /home/ubuntu/spring-2023-ros-workspace/devel/share/pi_cam_package/cmake/pi_cam_packageConfig.cmake
-/home/ubuntu/spring-2023-ros-workspace/devel/.private/pi_cam_package/share/pi_cam_package/cmake/pi_cam_packageConfig-version.cmake /home/ubuntu/spring-2023-ros-workspace/devel/share/pi_cam_package/cmake/pi_cam_packageConfig-version.cmake
