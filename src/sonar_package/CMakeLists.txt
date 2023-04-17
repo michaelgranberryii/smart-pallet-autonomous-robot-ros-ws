@@ -112,8 +112,8 @@ catkin_package(
 
 catkin_install_python(PROGRAMS
 	src/sonar0x70_publisher.py
+	src/sonar0x71_publisher.py 
 	src/sonar0x72_publisher.py 
-	src/sonar0x74_publisher.py 
 	src/sonar_subscriber.py
 	src/sonar_algo_sub.py
 	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

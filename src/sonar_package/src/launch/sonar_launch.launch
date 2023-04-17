@@ -1,7 +1,7 @@
 <launch>
 	<node pkg="sonar_package" type="sonar0x70_publisher.py" name="sonar0x70_publisher_node" />
+	<node pkg="sonar_package" type="sonar0x71_publisher.py" name="sonar0x71_publisher_node" />
 	<node pkg="sonar_package" type="sonar0x72_publisher.py" name="sonar0x72_publisher_node" />
-	<node pkg="sonar_package" type="sonar0x74_publisher.py" name="sonar0x74_publisher_node" />
 	<node pkg="sonar_package" type="sonar_algo_sub.py" name="sonar_listener_algo" />
 	<node pkg="sonar_package" type="sonar_subscriber.py" name="sonar_listener" />
 </launch>
