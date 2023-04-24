@@ -5,13 +5,16 @@ from sensor_msgs.msg import Range
 import sonar_package.sonar as sp
 import time #Delay
 
+addr =0x74
 
 def sonar_talker():
-	pub = rospy.Publisher('sonar0x71_range_topic', Int32, queue_size=10) # publisher object
-	rospy.init_node('sonar0x71_publisher_node', anonymous=True) # initialize publisher node
-	rate = rospy.Rate(100) # ros rate
+	# pub = rospy.Publisher('sonar' + str(addr) + '_range_topic', Int32, queue_size=10) # publisher object
+	pub = rospy.Publisher('sonar' + '74' + '_range_topic', Int32, queue_size=10) # publisher object
+	rospy.init_node('sonar' + '74' + '_publisher_node', anonymous=True) # initialize publisher node
+	rate = rospy.Rate(10) # ros rate
 	rospy.loginfo("Ros sonar node now publishing.")
-	s = sp.Sonar(0x71)
+	# sp = Sonar(addr)
+	s = sp.Sonar(addr)
 	while not rospy.is_shutdown():
 		rangeValue = s.read_range()
 		rospy.loginfo(rangeValue)
@@ -23,3 +26,6 @@ if __name__ == "__main__":
 		sonar_talker()
 	except rospy.ROSInterruptException:
 		pass
+
+
+
