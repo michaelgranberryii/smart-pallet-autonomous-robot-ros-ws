@@ -7,6 +7,9 @@
 	<node pkg="sonar_package" type="sonar0x72_publisher.py" name="sonar0x72_publisher_node" />
 	<node pkg="sonar_package" type="sonar0x74_publisher.py" name="sonar0x74_publisher_node" />
 
+	<!-- RPicam -->
+	<node pkg="rpicam" type="rpicam_pub.py" name="rpicam_publisher_node" />
+
 	<!-- Create Robot -->
 	<arg name="config" default="$(find create_bringup)/config/default.yaml" />
   	<arg name="desc" default="true" />

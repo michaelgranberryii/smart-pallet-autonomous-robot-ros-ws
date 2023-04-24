@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import rospy
 from std_msgs.msg import Int32
+from std_msgs.msg import String
 import time #Delay
 from geometry_msgs.msg import Twist
 
@@ -9,16 +10,20 @@ from geometry_msgs.msg import Twist
 class Sub:
 	def __init__(self):
 		rospy.init_node('sonar_listener', anonymous=True)
-		self.t1 = 'sonar70_range_topic'
-		self.t2 = 'sonar72_range_topic'
-		self.t3 = 'sonar74_range_topic'
-		self.a =rospy.Subscriber(self.t1, Int32, self.sonar_callback_0x70)
-		self.b =rospy.Subscriber(self.t2, Int32, self.sonar_callback_0x72)
-		self.c =rospy.Subscriber(self.t3, Int32, self.sonar_callback_0x74)
+		self.ta = 'sonar70_range_topic'
+		self.tb = 'sonar72_range_topic'
+		self.tc = 'sonar74_range_topic'
+		self.td = 'video_label'
+		self.a =rospy.Subscriber(self.ta, Int32, self.sonar_callback_0x70)
+		self.b =rospy.Subscriber(self.tb, Int32, self.sonar_callback_0x72)
+		self.c =rospy.Subscriber(self.tc, Int32, self.sonar_callback_0x74)
+		self.d =rospy.Subscriber(self.td, String, self.video_label_callback)
 
 		self.range_sonar_left = 25 #0x70
 		self.range_sonar_center = 25 #0x71
 		self.range_sonar_right = 25 #0x72
+
+		self.video_label = []
 
 		# Sonar Array List
 		self.sonar_list = []
@@ -38,6 +43,10 @@ class Sub:
 	def sonar_callback_0x74(self, message):
 		self.range_sonar_right = message.data
 		# rospy.loginfo("sonar744: " + str(self.range_sonar_right))
+
+	def video_label_callback(self, message):
+		self.video_label = message.data
+		rospy.loginfo("video label: " + self.video_label)
 
 	def listener(self):
 		rate = rospy.Rate(10)
@@ -63,9 +72,11 @@ class Sub:
 		rospy.loginfo("sonar700: " + str(self.range_sonar_left))
 		rospy.loginfo("sonar722: " + str(self.range_sonar_center))
 		rospy.loginfo("sonar744: " + str(self.range_sonar_right))
+		rospy.loginfo("I see: " + str(self.video_label))
 
-		if self.range_sonar_left < 27:
+		if (self.range_sonar_left < 27) or (self.video_label == 'person'):
 			rospy.loginfo("turn_right is called")
+			rospy.loginfo("I see: " + str(self.video_label))
 			self.turn_right()
 		elif self.range_sonar_center < 27:
 			rospy.loginfo("center")

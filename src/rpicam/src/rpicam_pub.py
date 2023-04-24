@@ -10,7 +10,7 @@ camera = rpi.Cam()
 
 def publish_message():
     pub = rospy.Publisher('video_frames', Image, queue_size=10)
-    pub2 = rospy.Publisher('video_string', String, queue_size=10)
+    pub2 = rospy.Publisher('video_label', String, queue_size=10)
     rospy.init_node('video_pub_py', anonymous=True)
     rate = rospy.Rate(60)
 
@@ -24,7 +24,7 @@ def publish_message():
         result, objectInfo = camera.getObject(frame, 0.45, 0.2, objects = ['person','cup'])
         cv2.imshow("rpicam/ObjectDetection",frame)
         cv2.waitKey(1)
-
+        label = ''
 
         # Label code
         if objectInfo == []:
