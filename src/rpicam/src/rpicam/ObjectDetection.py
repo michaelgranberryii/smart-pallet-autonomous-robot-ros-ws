@@ -24,6 +24,9 @@ class Cam():
         self.net.setInputMean((127.5,127.5,127.5))
         self.net.setInputSwapRB(True)
 
+
+        self.label = ''
+
     def setCap(self,cap):
         self.cap = cap
 
@@ -47,14 +50,26 @@ class Cam():
                         cv.putText(img,str(round(confidence*100,2)),(box[1], box[0]), cv.FONT_HERSHEY_COMPLEX,1,(0,255,0),2)
         return img, objectInfo
     
+    def update_label(self, label):
+        self.label = label
 
     def startCam(self):
         self.cap.set(3,480)
         self.cap.set(4,480)
         while True:
             success, img = self.cap.read()
-            result, objectInfo = self.getObject(img,0.45,0.2, objects = ['person','phone'])
+            result, objectInfo = self.getObject(img,0.45,0.2, objects = ['person','book', 'cup'])
             print(object)
+            
+            # print(objectInfo)
+            if objectInfo == []:
+                print("I found nothing")
+            else:
+                print("I found something")
+                print(objectInfo[0])
+                print(objectInfo[0][1])
+                self.label = objectInfo[0][1]
+
             cv.imshow("ObjectDetection",img)
             cv.waitKey(1)
 
