@@ -67,11 +67,14 @@ class Sub:
 		if self.range_sonar_left < 27:
 			rospy.loginfo("turn_right is called")
 			self.turn_right()
-		elif self.range_sonar_center < 27:
-			rospy.loginfo("center")
+
+		# elif self.range_sonar_center < 27:
+		# 	rospy.loginfo("center")
+
 		elif self.range_sonar_right < 27:
 			rospy.loginfo("turn_left is called")
 			self.turn_left()
+
 		else:
 			rospy.loginfo("drive_foward is called")
 			self.drive_forward()
@@ -106,7 +109,7 @@ class Sub:
 
 		# Create a Twist message to hold the velocity command
 		velocity_cmd = Twist()
-		velocity_cmd.angular.z = 0.1
+		velocity_cmd.angular.z = 0.8
 
 		# Loop until the node is shut down
 		# while not rospy.is_shutdown():
@@ -126,7 +129,7 @@ class Sub:
 
 		# Create a Twist message to hold the velocity command
 		velocity_cmd = Twist()
-		velocity_cmd.angular.z = -0.1
+		velocity_cmd.angular.z = -0.8
 
 		# Loop until the node is shut down
 		# while not rospy.is_shutdown():

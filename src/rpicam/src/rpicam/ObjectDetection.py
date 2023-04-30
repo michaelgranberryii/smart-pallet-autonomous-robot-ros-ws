@@ -6,7 +6,8 @@ import os
 
 class Cam():
     def __init__(self):
-        self.cap = cv.VideoCapture(0)
+        self.cap = cv.VideoCapture()
+        self.cap.open("/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_627575FF-video-index0", cv.CAP_V4L)
         self.classification = []
 
         basePath = os.path.abspath(os.path.dirname(__file__))

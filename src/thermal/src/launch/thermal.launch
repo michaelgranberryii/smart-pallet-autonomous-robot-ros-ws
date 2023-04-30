@@ -1,0 +1,4 @@
+<launch>
+	<!-- Thermal -->
+	<node pkg="thermal" type="thermal_pub.py" name="thermal_publisher_node" />
+</launch>

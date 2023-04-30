@@ -10,6 +10,9 @@
 	<!-- RPicam -->
 	<node pkg="rpicam" type="rpicam_pub.py" name="rpicam_publisher_node" />
 
+	<!-- Thermal -->
+	<node pkg="thermal" type="thermal_pub.py" name="thermal_publisher_node" />
+
 	<!-- Create Robot -->
 	<arg name="config" default="$(find create_bringup)/config/default.yaml" />
   	<arg name="desc" default="true" />
