@@ -5,7 +5,7 @@ from sensor_msgs.msg import Range
 import sonar_package.sonar as sp
 import time #Delay
 
-addr =0x74
+addr =0x77
 addr_str = str(hex(addr))[2:4]
 
 def sonar_talker():

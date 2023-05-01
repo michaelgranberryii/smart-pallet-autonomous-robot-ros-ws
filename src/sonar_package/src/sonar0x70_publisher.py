@@ -6,12 +6,11 @@ import sonar_package.sonar as sp
 import time #Delay
 
 addr =0x70
-addr_str = str(addr)[2:3]
+addr_str = str(hex(addr))[2:4]
 
 def sonar_talker():
-	# pub = rospy.Publisher('sonar' + str(addr) + '_range_topic', Int32, queue_size=10) # publisher object
-	pub = rospy.Publisher('sonar' + '70' + '_range_topic', Int32, queue_size=10) # publisher object
-	rospy.init_node('sonar' + '70' + '_publisher_node', anonymous=True) # initialize publisher node
+	pub = rospy.Publisher('sonar' + addr_str + '_range_topic', Int32, queue_size=10) # publisher object
+	rospy.init_node('sonar' + addr_str + '_publisher_node', anonymous=True) # initialize publisher node
 	rate = rospy.Rate(10) # ros rate
 	rospy.loginfo("Ros sonar node now publishing.")
 	# sp = Sonar(addr)

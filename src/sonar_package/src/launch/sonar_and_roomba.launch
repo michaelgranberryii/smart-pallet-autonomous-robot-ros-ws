@@ -1,19 +1,13 @@
 <launch>
-	<!-- Roomba -->
-	<node pkg="roomba_package" type="roomba_sub.py" name="roomba_listener_algo" />
-
-	<!-- Sonar -->
 	<node pkg="sonar_package" type="sonar0x70_publisher.py" name="sonar0x70_publisher_node" />
 	<node pkg="sonar_package" type="sonar0x72_publisher.py" name="sonar0x72_publisher_node" />
 	<node pkg="sonar_package" type="sonar0x74_publisher.py" name="sonar0x74_publisher_node" />
+	<node pkg="sonar_package" type="sonar0x75_publisher.py" name="sonar0x75_publisher_node" />
+	<node pkg="sonar_package" type="sonar0x77_publisher.py" name="sonar0x77_publisher_node" />
+	<node pkg="sonar_package" type="sonar_sub.py" name="sonar_listener_algo_2" />
+	<!-- <node pkg="sonar_package" type="sonar_algo_sub.py" name="sonar_listener_algo_1" /> -->
+	<!-- <node pkg="sonar_package" type="sonar_subscriber.py" name="sonar_listener" /> -->
 
-	<!-- RPicam -->
-	<node pkg="rpicam" type="rpicam_pub.py" name="rpicam_publisher_node" />
-
-	<!-- Thermal -->
-	<node pkg="thermal" type="thermal_pub.py" name="thermal_publisher_node" />
-
-	<!-- Create Robot -->
 	<arg name="config" default="$(find create_bringup)/config/default.yaml" />
   	<arg name="desc" default="true" />
 

@@ -9,16 +9,22 @@ from geometry_msgs.msg import Twist
 class Sub:
 	def __init__(self):
 		rospy.init_node('sonar_listener', anonymous=True)
-		self.t1 = 'sonar70_range_topic'
-		self.t2 = 'sonar72_range_topic'
-		self.t3 = 'sonar74_range_topic'
-		self.a =rospy.Subscriber(self.t1, Int32, self.sonar_callback_0x70)
-		self.b =rospy.Subscriber(self.t2, Int32, self.sonar_callback_0x72)
-		self.c =rospy.Subscriber(self.t3, Int32, self.sonar_callback_0x74)
+		self.t70 = 'sonar70_range_topic'
+		self.t72 = 'sonar72_range_topic'
+		self.t74 = 'sonar74_range_topic'
+		self.t75 = 'sonar75_range_topic'
+		self.t77 = 'sonar77_range_topic'
+		self.a =rospy.Subscriber(self.t70, Int32, self.sonar_callback_0x70)
+		self.b =rospy.Subscriber(self.t72, Int32, self.sonar_callback_0x72)
+		self.c =rospy.Subscriber(self.t74, Int32, self.sonar_callback_0x74)
+		self.c =rospy.Subscriber(self.t75, Int32, self.sonar_callback_0x75)
+		self.c =rospy.Subscriber(self.t77, Int32, self.sonar_callback_0x77)
 
-		self.range_sonar_left = 25 #0x70
-		self.range_sonar_center = 25 #0x71
+		self.range_sonar_far_left = 25 #0x75
+		self.range_sonar_left = 25 #0x74
+		self.range_sonar_center = 25 #0x70
 		self.range_sonar_right = 25 #0x72
+		self.range_sonar_far_right = 25 #0x75
 
 		# Sonar Array List
 		self.sonar_list = []
@@ -27,17 +33,25 @@ class Sub:
 		self.safe_dist = 10
 		self.min_range_reading = 0
 
-	def sonar_callback_0x70(self, message):
+	def sonar_callback_0x75(self, message):
+		self.range_sonar_far_left = message.data
+		# rospy.loginfo("sonar744: " + str(self.range_sonar_far_left))
+
+	def sonar_callback_0x74(self, message):
 		self.range_sonar_left = message.data
 		# rospy.loginfo("sonar700: " + str(self.range_sonar_left))
 
-	def sonar_callback_0x72(self, message):
+	def sonar_callback_0x70(self, message):
 		self.range_sonar_center = message.data
 		# rospy.loginfo("sonar722: " + str(self.range_sonar_center))
 
-	def sonar_callback_0x74(self, message):
+	def sonar_callback_0x72(self, message):
 		self.range_sonar_right = message.data
 		# rospy.loginfo("sonar744: " + str(self.range_sonar_right))
+
+	def sonar_callback_0x77(self, message):
+		self.range_sonar_far_right = message.data
+		# rospy.loginfo("sonar744: " + str(self.range_sonar_far_right))
 
 	def listener(self):
 		rate = rospy.Rate(10)
@@ -51,9 +65,9 @@ class Sub:
 	# 	rate = rospy.Rate(10)
 	# 	while not rospy.is_shutdown():
 			
-	# 		rospy.Subscriber(self.t1, Int32, self.sonar_callback_0x70)
-	# 		rospy.Subscriber(self.t2, Int32, self.sonar_callback_0x72)
-	# 		rospy.Subscriber(self.t3, Int32, self.sonar_callback_0x74)
+	# 		rospy.Subscriber(self.t70, Int32, self.sonar_callback_0x70)
+	# 		rospy.Subscriber(self.t72, Int32, self.sonar_callback_0x72)
+	# 		rospy.Subscriber(self.t74, Int32, self.sonar_callback_0x74)
 	# 		rospy.loginfo("LISTN")
 	# 		self.obj_avoidance()
 	# 		rate.sleep()

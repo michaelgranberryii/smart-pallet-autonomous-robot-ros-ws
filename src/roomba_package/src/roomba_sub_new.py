@@ -9,7 +9,7 @@ from geometry_msgs.msg import Twist
 
 class Sub:
 	def __init__(self):
-		rospy.init_node('sonar_listener', anonymous=True)
+		rospy.init_node('sonar_listener_2', anonymous=True)
 		self.t_70 = 'sonar70_range_topic'
 		self.t_72 = 'sonar72_range_topic'
 		self.t_74 = 'sonar74_range_topic'
@@ -39,7 +39,7 @@ class Sub:
 		self.sonar_list = []
 
 		# Safe Distance
-		self.safe_dist = 10
+		self.safe_dist = 30
 		self.min_range_reading = 0
 
 	def sonar_callback_0x75(self, message):
@@ -77,8 +77,9 @@ class Sub:
 			self.obj_avoidance()
 			rate.sleep()
 
-	# def (self):
-
+	def sonar_list(self):
+		self.sonar_list = [self.range_sonar_far_left, self.range_sonar_left, self.range_sonar_center, self.range_sonars_right, self.range_sonar_far_right]
+		
 	def obj_avoidance(self):
 		# rospy.loginfo("sonar77: " + str(self.range_sonar_far_right))
 		# rospy.loginfo("sonar72: " + str(self.range_sonar_right))
@@ -95,25 +96,37 @@ class Sub:
 			rospy.loginfo("Thermal camera sees: " + str(self.thermal_video_label))
 
 
+
 		# Main Algo
-		# if ((self.video_label == 'person') or (self.thermal_video_label == 'person')):
-		# 	rospy.loginfo("Stop landing sequence")
-		# 	self.stop
-		# else:
-		if (self.range_sonar_left < 27) or (self.range_sonar_far_left < 37):
-			rospy.loginfo("turn_right is called")
-			self.turn_right()
-
-		elif self.range_sonar_center < 27:
-			rospy.loginfo("center")
-
-		elif (self.range_sonar_right < 27) or (self.range_sonar_far_right < 37):
-			rospy.loginfo("turn_left is called")
-			self.turn_left()
-
-		else:
-			rospy.loginfo("drive_foward is called")
+		if ((self.range_sonar_far_left > self.safe_dist) and (self.range_sonar_left > self.safe_dist) and (self.range_sonar_center > self.safe_dist) and (self.range_sonar_right > self.safe_dist) and (self.range_sonar_far_right > self.safe_dist)):
+			rospy.loginfo("Drive is called")
 			self.drive_forward()
+		elif((self.range_sonar_far_left < self.safe_dist) or (self.range_sonar_left < self.safe_dist) or(self.range_sonar_center < self.safe_dist) or (self.range_sonar_right < self.safe_dist) or (self.range_sonar_far_right < self.safe_dist)):
+			if(self.range_sonar_center < self.safe_dist):
+				max_dist = max(self.range_sonar_far_left, self.range_sonar_left, self.range_sonar_right, self.range_sonar_far_right)
+				if((max_dist == self.range_sonar_far_left) or (max_dist == self.range_sonar_left)):
+					rospy.loginfo("Turn left_c is called")
+					self.turn_left
+				else:
+					rospy.loginfo("Turn right_c is called")
+					self.turn_right
+			elif(self.range_sonar_far_left < self.safe_dist):
+				rospy.loginfo("Turn right0 is called")
+				self.turn_right()
+			elif(self.range_sonar_left < self.safe_dist):
+				rospy.loginfo("Turn right1 is called")
+				self.turn_right()
+			elif(self.range_sonar_right < self.safe_dist):
+				rospy.loginfo("Turn left0 is called")
+				self.turn_left()
+			elif(self.range_sonar_far_right < self.safe_dist):
+				rospy.loginfo("Turn left1 is called")
+				self.turn_left()
+			else:
+				self.stop()
+		else:
+			self.stop()
+			
 
 	def stop(self):
 		# Initialize the node and set the publisher topic

@@ -59,7 +59,7 @@ class Cam():
         self.cap.set(4,480)
         while True:
             success, img = self.cap.read()
-            result, objectInfo = self.getObject(img,0.45,0.2, objects = ['person','book', 'cup'])
+            result, objectInfo = self.getObject(img,0.70,0.2, objects = ['person'])
             print(object)
             
             # print(objectInfo)

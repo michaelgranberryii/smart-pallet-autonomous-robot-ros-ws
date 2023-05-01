@@ -111,6 +111,7 @@ catkin_package(
 
 catkin_install_python(PROGRAMS
 	src/roomba_sub.py
+	src/roomba_sub_new.py
 	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 ###########

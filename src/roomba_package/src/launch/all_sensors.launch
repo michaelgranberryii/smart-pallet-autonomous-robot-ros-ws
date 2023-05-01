@@ -1,0 +1,86 @@
+<launch>
+	<!-- Roomba -->
+	<!-- <node pkg="roomba_package" type="roomba_sub.py" name="roomba_listener_algo" /> -->
+	<node pkg="roomba_package" type="roomba_sub_new.py" name="roomba_listener_algo_2" />
+
+	<!-- Sonar -->
+	<node pkg="sonar_package" type="sonar0x70_publisher.py" name="sonar0x70_publisher_node" />
+	<node pkg="sonar_package" type="sonar0x72_publisher.py" name="sonar0x72_publisher_node" />
+	<node pkg="sonar_package" type="sonar0x74_publisher.py" name="sonar0x74_publisher_node" />
+	<node pkg="sonar_package" type="sonar0x75_publisher.py" name="sonar0x75_publisher_node" />
+	<node pkg="sonar_package" type="sonar0x77_publisher.py" name="sonar0x77_publisher_node" />
+	<!-- <node pkg="sonar_package" type="sonar_sub.py" name="sonar_listener_algo_2" /> -->
+
+	<!-- RPicam -->
+	<node pkg="rpicam" type="rpicam_pub.py" name="rpicam_publisher_node" />
+
+	<!-- Thermal -->
+	<node pkg="thermal" type="thermal_pub.py" name="thermal_publisher_node" />
+
+	<!-- RP Lidar LAUNCH-->
+	<node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+	<param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
+	<param name="serial_baudrate"     type="int"    value="115200"/><!--A1/A2 -->
+	<!--param name="serial_baudrate"     type="int"    value="256000"--><!--A3 -->
+	<param name="frame_id"            type="string" value="laser"/>
+	<param name="inverted"            type="bool"   value="false"/>
+	<param name="angle_compensate"    type="bool"   value="true"/>
+	</node>
+
+	<!-- Hector Slam LAUNCH-->
+		<arg name="tf_map_scanmatch_transform_frame_name" default="scanmatcher_frame"/>
+	<arg name="base_frame" default="laser"/>
+	<arg name="odom_frame" default="laser"/>
+	<arg name="pub_map_odom_transform" default="true"/>
+	<arg name="scan_subscriber_queue_size" default="5"/>
+	<arg name="scan_topic" default="scan"/>
+	<arg name="map_size" default="2048"/>
+	
+	<node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
+		
+		<!-- Frame names -->
+		<param name="map_frame" value="map" />
+		<param name="base_frame" value="$(arg base_frame)" />
+		<param name="odom_frame" value="$(arg odom_frame)" />
+		
+		<!-- Tf use -->
+		<param name="use_tf_scan_transformation" value="true"/>
+		<param name="use_tf_pose_start_estimate" value="false"/>
+		<param name="pub_map_odom_transform" value="$(arg pub_map_odom_transform)"/>
+		
+		<!-- Map size / start point -->
+		<param name="map_resolution" value="0.050"/>
+		<param name="map_size" value="$(arg map_size)"/>
+		<param name="map_start_x" value="0.5"/>
+		<param name="map_start_y" value="0.5" />
+		<param name="map_multi_res_levels" value="2" />
+		
+		<!-- Map update parameters -->
+		<param name="update_factor_free" value="0.4"/>
+		<param name="update_factor_occupied" value="0.9" />    
+		<param name="map_update_distance_thresh" value="0.4"/>
+		<param name="map_update_angle_thresh" value="0.06" />
+		<param name="laser_z_min_value" value = "-1.0" />
+		<param name="laser_z_max_value" value = "1.0" />
+		
+		<!-- Advertising config --> 
+		<param name="advertise_map_service" value="true"/>
+		
+		<param name="scan_subscriber_queue_size" value="$(arg scan_subscriber_queue_size)"/>
+		<param name="scan_topic" value="$(arg scan_topic)"/>
+		
+		<!-- Debug parameters -->
+		<!--
+		<param name="output_timing" value="false"/>
+		<param name="pub_drawings" value="true"/>
+		<param name="pub_debug_output" value="true"/>
+		-->
+		<param name="tf_map_scanmatch_transform_frame_name" value="$(arg tf_map_scanmatch_transform_frame_name)" />
+	</node>
+		
+	<!--<node pkg="tf" type="static_transform_publisher" name="map_nav_broadcaster" args="0 0 0 0 0 0 map nav 100"/>-->
+
+	<!-- RVIZ LANCUH -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find rplidar_ros)/rviz/rplidar.rviz" />
+	
+</launch>
