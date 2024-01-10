@@ -20,6 +20,6 @@ This project revolves around aggregating data from several different sensors, an
 
 ### Software
 
-* [Ubuntu 20.04(https://releases.ubuntu.com/focal/)
+* [Ubuntu 20.04](https://releases.ubuntu.com/focal/)
 * [ROS Noetic](https://wiki.ros.org/noetic)
 * [OpenCV](https://opencv.org/releases/)
