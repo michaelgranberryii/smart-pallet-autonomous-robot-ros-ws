@@ -1,4 +1,4 @@
-# Drone Modular Smart Pallet Project
+# Smart Pallet Autonomous Robot
  
 ## Description
 
