@@ -1,0 +1,9 @@
+[submodule "src/create_robot"]
+	path = src/create_robot
+	url = git@github.com:AutonomyLab/create_robot.git
+[submodule "src/RPLidar_Hector_SLAM"]
+	path = src/RPLidar_Hector_SLAM
+	url = git@github.com:NickL77/RPLidar_Hector_SLAM.git
+[submodule "src/slam_toolbox"]
+	path = src/slam_toolbox
+	url = git@github.com:SteveMacenski/slam_toolbox.git
